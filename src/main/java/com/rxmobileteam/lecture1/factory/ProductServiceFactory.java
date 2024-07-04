@@ -1,7 +1,7 @@
 package com.rxmobileteam.lecture1.factory;
 
+import com.rxmobileteam.lecture1.data.ProductDao;
 import com.rxmobileteam.lecture1.service.ProductService;
-import com.rxmobileteam.utils.ExerciseNotCompletedException;
 
 /**
  * {@link ProductServiceFactory} is used to create an instance of {@link ProductService}
@@ -15,8 +15,9 @@ public class ProductServiceFactory {
      *
      * @return ProductService
      */
+
     public ProductService createProductService() {
-        // TODO: implement this method
-        throw new ExerciseNotCompletedException();
+        ProductDao productDao = new ProductDao();
+        return new ProductService(productDao);
     }
 }

@@ -4,7 +4,9 @@ import com.rxmobileteam.lecture1.service.Product;
 import com.rxmobileteam.utils.ExerciseNotCompletedException;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -16,7 +18,6 @@ import java.util.Set;
  */
 public class ProductDao {
     private final Set<Product> products = new HashSet<>();
-
     /**
      * Stores a new product
      *
@@ -25,7 +26,7 @@ public class ProductDao {
      */
     public boolean add(@NotNull Product product) {
         // TODO: implement this method
-        throw new ExerciseNotCompletedException();
+        return products.add(product);
     }
 
     /**
@@ -35,7 +36,15 @@ public class ProductDao {
      */
     public Set<Product> findAll() {
         // TODO: implement this method
-        throw new ExerciseNotCompletedException();
+        return new HashSet<>(products);
     }
 
+    public Product getProduct(String id) {
+        for (Product product : products) {
+            if (product.getId().equals(id)) {
+                return product;
+            }
+        }
+        return null;
+    }
 }

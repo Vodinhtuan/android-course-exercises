@@ -16,22 +16,14 @@ import java.util.stream.Collectors;
  * TODO: 1. Using {@link ProductDao} implement method {@link ProductService#addProduct(Product)}}
  * TODO: 2. Using {@link ProductDao} implement method {@link ProductService#searchProducts(String)}
  */
-public class ProductService implements IProductService {
-    ProductDao productDao;
+public class ProductService {
+    @NotNull
+    private final IProductService productDao;
 
-    public ProductService(ProductDao productDao) {
+    public ProductService(@NotNull IProductService productDao) {
         this.productDao = productDao;
     }
 
-    @Override
-    public Set<Product> findAll() {
-        return productDao.findAll();
-    }
-
-    @Override
-    public Product findById(String id) {
-        return productDao.getProduct(id);
-    }
 
     /**
      * Adds a new product to the system.
@@ -39,14 +31,9 @@ public class ProductService implements IProductService {
      * @param product a product to add
      * @return {@code true} if a product was added, {@code false} otherwise.
      */
-    @Override
     public boolean addProduct(@NotNull Product product) {
         // TODO: implement this method
-        if (productDao.add(product)) {
-            return true;
-        } else {
-            return false;
-        }
+        return productDao.addProduct(product);
     }
 
     /**
@@ -55,7 +42,7 @@ public class ProductService implements IProductService {
      * @param query a search query
      * @return a list of found products
      */
-    @Override
+
     public List<Product> searchProducts(String query) {
         // TODO: implement this method
         Set<Product> allProducts = productDao.findAll();

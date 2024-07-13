@@ -8,7 +8,6 @@ import java.util.Set;
 
 public interface IProductService {
     boolean addProduct (@NotNull Product product);
-    Set<Product> findAll();
-    Product findById(String id);
-    List<Product> searchProducts(String query);
+    @NotNull Set<Product> findAll();
+
 }

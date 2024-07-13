@@ -17,7 +17,8 @@ public class ProductServiceFactory {
      */
 
     public ProductService createProductService() {
-        ProductDao productDao = new ProductDao();
-        return new ProductService(productDao);
+        /*ProductDao productDao = new ProductDao();
+        return new ProductService(productDao);*/
+        return null;
     }
 }
